@@ -43,18 +43,6 @@ function BinarySearch(value, values) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 function binarySearchRecursive(value, values, start=0, end=values.length-1) {
     if(start > end) {
         return -1
