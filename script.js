@@ -4,15 +4,21 @@ const values = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 console.log(values)
 
 //måler hvor hurtigt funktionen bliver udført
-performance.mark("timer-start");
-binarySearchRecursive(13, values);
-performance.mark("timer-stop");
+//performance.mark("timer-start");
+//binarySearchRecursive(13, values);
+//performance.mark("timer-stop");
 
-performance.mark("index-start");
-values.indexOf(13);
-performance.mark("index-stop");
+//performance.mark("index-start");
+//values.indexOf(13);
+//performance.mark("index-stop");
 
 //i koncollen brug performance.measure("binrec", "timer-start", "timer-stop");
+
+document.getElementById("find-button").addEventListener("click", function() {
+    const inputValue = parseInt(document.getElementById("number-input").value);
+    const array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; 
+    BinarySearch(inputValue, array);
+});
 
 
 function BinarySearch(value, values) {
@@ -27,13 +33,19 @@ function BinarySearch(value, values) {
         console.log(`Kigger mellem ${start} og ${end}`)
 
         if(value === values[middle]) {
-            console.log(`Kigger på midten ${middle} - leder efter ${value}, fandt ${values[middle]}`)
+            const list = document.querySelector("#guess-list");
+            const html = `<li>Jeg fandt nummeret ${value} - På plads ${middle}</li>`
+            list.insertAdjacentHTML("beforeend", html)
             found = true;
         } else if(value>values[middle]) {
-            console.log(`Kigger på midten ${middle} - leder efter ${value}, fandt ${values[middle]} `)
+            const list = document.querySelector("#guess-list");
+            const html = `<li>Kigger på midten ${middle} - leder efter ${value}, fandt ${values[middle]} </li>`
+            list.insertAdjacentHTML("beforeend", html)
             start = middle + 1;
         } else if(value<values[middle]) {
-            console.log(`Kigger på midten ${middle} - leder efter ${value}, fandt ${values[middle]} `)
+            const list = document.querySelector("#guess-list");
+            const html = `<li>Kigger på midten ${middle} - leder efter ${value}, fandt ${values[middle]} </li>`
+            list.insertAdjacentHTML("beforeend", html)
             end = middle - 1;
         }
     }
